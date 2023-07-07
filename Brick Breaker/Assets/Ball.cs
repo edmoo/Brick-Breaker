@@ -39,13 +39,14 @@ public class Ball : MonoBehaviour
             float width = collider.bounds.size.x;
 
             float ball_on_paddle =gameObject.transform.position.x-position_x;
-            float minAngle = 30f;  // Minimum angle for -1
-            float maxAngle = 150f;   // Maximum angle for 1
+            //set the max angles the player can send the ball out at
+            float minAngle = 30f;
+            float maxAngle = 150f; 
 
-            // Map the number to the desired angle range
+            //finds the angle between max and min based on ball_on_paddle (which is between -1 and 1)
             float mappedAngle = Mathf.Lerp(maxAngle, minAngle, (ball_on_paddle + 1f) / 2f);
 
-            // Convert the mapped angle to radians
+            //convert the mapped angle to radians then send it in new direction
             float angleInRadians = (mappedAngle) * Mathf.Deg2Rad;
             direction = new Vector2(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians));
 
